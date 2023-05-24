@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AjaxResponse } from 'rxjs/ajax';
 import { Book } from '../book';
+import { Archive } from '../archive';
 import { AccessArchiveService } from '../access-archive.service';
 
 @Component({
@@ -24,8 +25,9 @@ export class InsertionComponent implements OnInit {
     this.aas.getArchive().subscribe({
       next: (x: AjaxResponse<any>) => {
         let bookList: Array<Book> = JSON.parse(x.response);
-        bookList.push(newBook);
-        let newArchive: string = JSON.stringify(bookList);
+        let archive: Archive = new Archive(bookList);
+        archive.addBook(newBook);
+        let newArchive: string = JSON.stringify(archive.elenco);
         this.aas.saveArchive(newArchive).subscribe({
           next: (x) => {this.insertionEvent.emit('home')},
           error: (err) => console.log(err.response)
