@@ -1,4 +1,7 @@
 <div *ngIf='status==="home"'>
   <app-title></app-title>
+  <button (click)='changeStatus("ins")'>Inserzione</button><br><br>
+  <button (click)='changeStatus("res")'>Ricerca</button>
 </div>
+<app-insertion *ngIf='status==="ins"' (insertionEvent)='changeStatus($event)'></app-insertion>
 <app-exit *ngIf='status!=="home"' (exitEvent)='changeStatus($event)'></app-exit>

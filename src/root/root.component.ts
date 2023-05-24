@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from './title/title.component';
+import { InsertionComponent } from './insertion/insertion.component';
 import { ExitComponent } from './exit/exit.component';
 
 @Component({
@@ -8,7 +9,7 @@ import { ExitComponent } from './exit/exit.component';
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
   standalone: true,
-  imports: [CommonModule, TitleComponent, ExitComponent]
+  imports: [CommonModule, TitleComponent, InsertionComponent, ExitComponent]
 })
 
 export class RootComponent implements OnInit {
