@@ -19,4 +19,4 @@ export class Archive {
   removeBook(id:string) {
     this.elenco.splice(this.elenco.findIndex((el) => el.position === id), 1);
   }
-}
+} 

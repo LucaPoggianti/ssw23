@@ -15,15 +15,31 @@ import { AccessArchiveService } from '../access-archive.service';
 })
 
 export class ResearchComponent implements OnInit {
-  resResult: Array<Book> = [];
   status: string = 'res-home';
+  resResult: Array<Book> = [];
   singleBook: Book;
-  loan: boolean = false;
 
   constructor(private aas: AccessArchiveService) {}
 
   findBook() {
-    // 
+    let input: string = (document.getElementById('research') as HTMLInputElement).value;
+    if ((input.length === 0) || (input === ' ')) {
+      this.resResult = [];
+      return;
+    }
+    let key = input.toLocaleLowerCase().trim();
+    this.aas.getArchive().subscribe({
+      next: (x: AjaxResponse<any>) => {
+        let bookList: Array<Book> = JSON.parse(x.response);
+        let archive: Archive = new Archive(bookList);
+        this.resResult = archive.checkKey(key);
+        if (this.resResult.length === 1) {
+          this.singleBook = this.resResult[0];
+          this.status = 'res-des';
+        }
+      },
+      error: (err) => console.log(err.response)
+    }); 
   }
 
   ngOnInit() {}
