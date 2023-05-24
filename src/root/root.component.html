@@ -1,3 +1,4 @@
 <div *ngIf='status==="home"'>
   <app-title></app-title>
 </div>
+<app-exit *ngIf='status!=="home"' (exitEvent)='changeStatus($event)'></app-exit>
