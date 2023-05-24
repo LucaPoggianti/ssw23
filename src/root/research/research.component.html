@@ -5,4 +5,5 @@
 </div>
 <div *ngIf='status==="res-des"'>
   <app-description [singleBook]='singleBook' [loan]='loan'></app-description>
+  <app-loan *ngIf='loan===false'></app-loan>
 </div>
