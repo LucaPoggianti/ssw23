@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core'; 
 import { AjaxResponse } from 'rxjs/ajax';
 import { Book } from '../book';
 import { Archive } from '../archive';

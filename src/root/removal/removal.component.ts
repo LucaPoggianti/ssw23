@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { AccessArchiveService } from '../access-archive.service';
@@ -12,7 +12,7 @@ import { Archive } from '../archive';
   styleUrls: ['./removal.component.css'],
   standalone: true,
   imports: [CommonModule],
-  providers: [AccessArchiveService]
+  providers: [AccessArchiveService] 
 })
 
 export class RemovalComponent implements OnInit {

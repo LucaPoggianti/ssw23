@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { TitleComponent } from './title/title.component';
 import { InsertionComponent } from './insertion/insertion.component';
 import { ResearchComponent } from './research/research.component';
+import { RemovalComponent } from './removal/removal.component';
 import { ExitComponent } from './exit/exit.component';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
   standalone: true,
-  imports: [CommonModule, TitleComponent, InsertionComponent, ResearchComponent, ExitComponent]
+  imports: [CommonModule, TitleComponent, InsertionComponent, ResearchComponent, RemovalComponent, ExitComponent]
 })
 
 export class RootComponent implements OnInit {
