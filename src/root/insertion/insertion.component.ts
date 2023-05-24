@@ -22,11 +22,12 @@ export class InsertionComponent implements OnInit {
     let tit: string = (document.getElementById('title') as HTMLInputElement).value;
     let pos: string = (document.getElementById('position') as HTMLInputElement).value;
     let newBook: Book = new Book(pos, aut, tit, undefined);
+    
     this.aas.getArchive().subscribe({
       next: (x: AjaxResponse<any>) => {
         let bookList: Array<Book> = JSON.parse(x.response);
         let archive: Archive = new Archive(bookList);
-        archive.addBook(newBook);
+        archive.addBook(newBook);       
         let newArchive: string = JSON.stringify(archive.elenco);
         this.aas.saveArchive(newArchive).subscribe({
           next: (x) => {this.insertionEvent.emit('home')},
