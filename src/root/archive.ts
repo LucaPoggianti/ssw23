@@ -15,4 +15,8 @@ export class Archive {
   addBook(newBook:Book) {
     this.elenco.push(newBook);
   }
+
+  removeBook(id:string) {
+    this.elenco.splice(this.elenco.findIndex((el) => el.position === id), 1);
+  }
 }
