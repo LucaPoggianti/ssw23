@@ -14,7 +14,7 @@ import { ExitComponent } from './exit/exit.component';
 export class RootComponent implements OnInit {
   status: string = 'home';
 
-  changeStatus(statusName:any) {
+  changeStatus(statusName:string) {
     this.status = statusName;
   }
 

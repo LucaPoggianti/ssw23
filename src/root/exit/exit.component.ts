@@ -1,12 +1,10 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-exit',
   templateUrl: './exit.component.html',
   styleUrls: ['./exit.component.css'],
-  standalone: true,
-  imports: [CommonModule]
+  standalone: true
 })
 
 export class ExitComponent implements OnInit {
