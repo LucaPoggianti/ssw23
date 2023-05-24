@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    //"strict": true,
+    //"strict": true,  //da commentare per l'esame
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
