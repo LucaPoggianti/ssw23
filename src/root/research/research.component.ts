@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { Archive } from '../archive';
 import { Book } from '../book';
+import { ResultComponent } from './result/result.component';
 import { AccessArchiveService } from '../access-archive.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AccessArchiveService } from '../access-archive.service';
   templateUrl: './research.component.html',
   styleUrls: ['./research.component.css'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ResultComponent],
   providers: [AccessArchiveService]
 })
 
@@ -18,6 +19,7 @@ export class ResearchComponent implements OnInit {
   status: string = 'res-home';
   resResult: Array<Book> = [];
   singleBook: Book;
+  loan: boolean = false;
 
   constructor(private aas: AccessArchiveService) {}
 
