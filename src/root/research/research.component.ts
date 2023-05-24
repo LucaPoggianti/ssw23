@@ -4,6 +4,7 @@ import { AjaxResponse } from 'rxjs/ajax';
 import { Archive } from '../archive';
 import { Book } from '../book';
 import { ResultComponent } from './result/result.component';
+import { DescriptionComponent } from './description/description.component';
 import { AccessArchiveService } from '../access-archive.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { AccessArchiveService } from '../access-archive.service';
   templateUrl: './research.component.html',
   styleUrls: ['./research.component.css'],
   standalone: true,
-  imports: [CommonModule, ResultComponent],
+  imports: [CommonModule, ResultComponent, DescriptionComponent],
   providers: [AccessArchiveService]
 })
 
@@ -37,6 +38,9 @@ export class ResearchComponent implements OnInit {
         this.resResult = archive.checkKey(key);
         if (this.resResult.length === 1) {
           this.singleBook = this.resResult[0];
+          if (this.resResult[0].nominative !== undefined) {
+            this.loan = true;
+          }
           this.status = 'res-des';
         }
       },

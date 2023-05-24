@@ -3,3 +3,6 @@
   <input id='research' (keyup)=findBook()><br>
   <app-result [resResult]='resResult'></app-result>
 </div>
+<div *ngIf='status==="res-des"'>
+  <app-description [singleBook]='singleBook' [loan]='loan'></app-description>
+</div>
