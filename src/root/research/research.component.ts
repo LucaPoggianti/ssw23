@@ -6,7 +6,6 @@ import { Book } from '../book';
 import { ResultComponent } from './result/result.component';
 import { DescriptionComponent } from './description/description.component';
 import { LoanComponent } from './loan/loan.component';
-import { RemovalComponent } from './removal/removal.component';
 import { AccessArchiveService } from '../access-archive.service';
 
 @Component({
@@ -14,7 +13,7 @@ import { AccessArchiveService } from '../access-archive.service';
   templateUrl: './research.component.html',
   styleUrls: ['./research.component.css'],
   standalone: true,
-  imports: [CommonModule, ResultComponent, DescriptionComponent, LoanComponent, RemovalComponent],
+  imports: [CommonModule, ResultComponent, DescriptionComponent, LoanComponent],
   providers: [AccessArchiveService]
 })
 
