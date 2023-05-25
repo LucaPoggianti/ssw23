@@ -4,6 +4,5 @@
   <button (click)='changeStatus("res")'>Ricerca</button>
 </div>
 <app-insertion *ngIf='status==="ins"' (insertionEvent)='changeStatus($event)'></app-insertion>
-<app-research *ngIf='status==="res"'></app-research>
-<app-removal (removalEvent)='changeStatus($event)'></app-removal>
+<app-research *ngIf='status==="res"' (researchEvent)='changeStatus($event)'></app-research>
 <app-exit *ngIf='status!=="home"' (exitEvent)='changeStatus($event)'></app-exit>

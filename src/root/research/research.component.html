@@ -1,11 +1,12 @@
-<div *ngIf='status==="res-home"'>
+<div *ngIf='statusRes==="res-home"'>
   <h3>Ricerca</h3>
   <input id='research' (keyup)=findBook()><br>
   <app-result [resResult]='resResult'></app-result>
 </div>
-<div *ngIf='status==="res-des"'>
+<div *ngIf='statusRes==="res-des"'>
   <app-description [singleBook]='singleBook' [loan]='loan'></app-description>
   <div *ngIf='loan===false'>
-    <app-loan></app-loan>
+    <app-loan></app-loan><br>
+    <app-removal [singleBook]='singleBook' (removalEvent)='emitStatus($event)'></app-removal><br><br>
   </div>
 </div>
