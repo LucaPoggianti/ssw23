@@ -6,7 +6,7 @@
 <div *ngIf='statusRes==="res-des"'>
   <app-description [singleBook]='singleBook' [loan]='loan'></app-description>
   <div *ngIf='loan===false'>
-    <app-loan (loanEvent)='emitStatus($event)'></app-loan><br><br>
+    <app-loan [singleBook]='singleBook' (loanEvent)='emitStatus($event)'></app-loan><br><br>
     <app-removal [singleBook]='singleBook' (removalEvent)='emitStatus($event)'></app-removal><br><br>
   </div>
 </div>

@@ -22,8 +22,6 @@ export class LoanComponent implements OnInit {
     let id: string = this.singleBook.position;  
     var input: HTMLInputElement = document.getElementById('nominative') as HTMLInputElement;
     var nominative = input.value;
-    console.log(id, nominative);
-    /*
     this.aas.getArchive().subscribe({
       next: (x:AjaxResponse<any>) => {
         let bookList: Array<Book> = JSON.parse(x.response);
@@ -37,8 +35,6 @@ export class LoanComponent implements OnInit {
       },
       error: (err) => console.log(err.response)
     })
-    */
-
   }
 
   
