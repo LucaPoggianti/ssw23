@@ -1,17 +1,47 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../../book';
+import { Archive } from '../../archive';
+import { AjaxResponse } from 'rxjs/ajax';
+import { AccessArchiveService } from '../../access-archive.service';
 
 @Component({
   selector: 'app-loan',
   templateUrl: './loan.component.html',
   styleUrls: ['./loan.component.css'],
-  standalone: true
+  standalone: true,
+  providers: [AccessArchiveService] 
 })
 
 export class LoanComponent implements OnInit {
   @Input() singleBook: Book;
+  @Output() loanEvent = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(private aas: AccessArchiveService) {}
+
+  doLoan() {
+    let id: string = this.singleBook.position;  
+    var input: HTMLInputElement = document.getElementById('nominative') as HTMLInputElement;
+    var nominative = input.value;
+    console.log(id, nominative);
+    /*
+    this.aas.getArchive().subscribe({
+      next: (x:AjaxResponse<any>) => {
+        let bookList: Array<Book> = JSON.parse(x.response);
+        let archive: Archive = new Archive(bookList);
+        archive.changeNominative(id, nominative);             
+        let newArchive: string = JSON.stringify(archive.elenco);
+        this.aas.saveArchive(newArchive).subscribe({
+          next: (x) => {this.loanEvent.emit('home')},
+          error: (err) => console.log(err.response)
+        });              
+      },
+      error: (err) => console.log(err.response)
+    })
+    */
+
+  }
+
+  
 
   ngOnInit() {}
 

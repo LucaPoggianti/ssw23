@@ -22,7 +22,7 @@ export class RemovalComponent implements OnInit {
   constructor(private aas: AccessArchiveService) {}
 
   removeBook() {
-    let id: string = this.singleBook.position; 
+    let id: string = this.singleBook.position;  
     this.aas.getArchive().subscribe({
       next: (x:AjaxResponse<any>) => {
         let bookList: Array<Book> = JSON.parse(x.response);
