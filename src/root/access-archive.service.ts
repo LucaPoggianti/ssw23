@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { Book } from './book';
+import { Archive } from './archive';
+
 
 @Injectable({
   providedIn: 'root'
