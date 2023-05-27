@@ -11,7 +11,5 @@ export class TitleComponent implements OnInit {
   title: string = 'Gestione biblioteca';
 
   constructor() {}
-
   ngOnInit() {}
-
 }

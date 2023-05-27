@@ -15,7 +15,5 @@ export class DescriptionComponent implements OnInit {
   @Input() loan: boolean;
 
   constructor() {}
-
   ngOnInit() {}
-
 }

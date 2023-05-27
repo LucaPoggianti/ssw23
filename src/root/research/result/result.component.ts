@@ -12,7 +12,5 @@ export class ResultComponent implements OnInit {
   @Input() resResult: Array<Book>; 
 
   constructor() {}
-
   ngOnInit() {}
-
 }

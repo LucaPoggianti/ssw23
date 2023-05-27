@@ -21,7 +21,7 @@ export class InsertionComponent implements OnInit {
     let aut: string = (document.getElementById('author') as HTMLInputElement).value;
     let tit: string = (document.getElementById('title') as HTMLInputElement).value;
     let pos: string = (document.getElementById('position') as HTMLInputElement).value;
-    let newBook: Book = new Book(pos, aut, tit, undefined);    
+    let newBook: Book = new Book(pos, aut, tit);
     this.aas.getArchive().subscribe({
       next: (x: AjaxResponse<any>) => {
         let bookList: Array<Book> = JSON.parse(x.response);
@@ -34,9 +34,8 @@ export class InsertionComponent implements OnInit {
         });
       },
       error: (err) => console.log(err.response)
-    }); 
+    });
   }
 
   ngOnInit() {}
-
 }

@@ -36,9 +36,6 @@ export class LoanComponent implements OnInit {
       error: (err) => console.log(err.response)
     })
   }
-
   
-
   ngOnInit() {}
-
 }

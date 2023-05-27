@@ -15,7 +15,5 @@ export class ExitComponent implements OnInit {
   }
 
   constructor() {}
-
   ngOnInit() {}
-
 }

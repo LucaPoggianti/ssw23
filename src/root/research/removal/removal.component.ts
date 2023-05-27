@@ -1,10 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
-import { AccessArchiveService } from '../../access-archive.service';
 import { Book } from '../../book';
 import { Archive } from '../../archive';
-
+import { AccessArchiveService } from '../../access-archive.service';
 
 @Component({
   selector: 'app-removal',
@@ -35,11 +34,8 @@ export class RemovalComponent implements OnInit {
         });              
       },
       error: (err) => console.log(err.response)
-
-    })
-
+    });
   }
 
   ngOnInit() {}
-
 }

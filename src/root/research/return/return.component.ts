@@ -32,12 +32,8 @@ export class ReturnComponent implements OnInit {
         });              
       },
       error: (err) => console.log(err.response)
-    })
-
-  }
-
-  
+    });
+  }  
 
   ngOnInit() {}
-
 }
