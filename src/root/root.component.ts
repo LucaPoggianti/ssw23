@@ -5,7 +5,6 @@ import { InsertionComponent } from './insertion/insertion.component';
 import { ResearchComponent } from './research/research.component';
 import { ExitComponent } from './exit/exit.component';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './root.component.html',
@@ -22,7 +21,5 @@ export class RootComponent implements OnInit {
   }
 
   constructor() {}
-
   ngOnInit() {}
-
 }
