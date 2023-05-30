@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-title',
@@ -7,9 +7,6 @@ import { Component, OnInit } from '@angular/core';
   standalone: true,
 })
 
-export class TitleComponent implements OnInit {
-  title: string = 'Gestione biblioteca';
-
-  constructor() {}
-  ngOnInit() {}
+export class TitleComponent {
+  @Input() title: string = 'Titolo default';
 }

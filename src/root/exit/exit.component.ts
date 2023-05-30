@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-exit',
@@ -7,13 +7,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   standalone: true
 })
 
-export class ExitComponent implements OnInit {
+export class ExitComponent {
   @Output() exitEvent = new EventEmitter<string>();
-
-  emitStatus(statusName:string) {
-    this.exitEvent.emit(statusName);
-  }
-
-  constructor() {}
-  ngOnInit() {}
 }

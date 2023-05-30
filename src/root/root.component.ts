@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TitleComponent } from './title/title.component';
 import { InsertionComponent } from './insertion/insertion.component';
@@ -13,13 +13,10 @@ import { ExitComponent } from './exit/exit.component';
   imports: [CommonModule, TitleComponent, InsertionComponent, ResearchComponent, ExitComponent]
 })
 
-export class RootComponent implements OnInit {
+export class RootComponent {
   status: string = 'home';
 
   changeStatus(statusName:string) {
     this.status = statusName;
   }
-
-  constructor() {}
-  ngOnInit() {}
 }

@@ -26,6 +26,4 @@ export class AccessArchiveService {
       body: newArchive
     });
   }
-
-  constructor() {}
 }
