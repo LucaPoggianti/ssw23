@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Component, Output, EventEmitter  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { Archive } from '../archive';
@@ -19,32 +19,28 @@ import { AccessArchiveService } from '../access-archive.service';
   providers: [AccessArchiveService]
 })
 
-export class ResearchComponent implements OnInit {
+export class ResearchComponent {
   @Output() researchEvent = new EventEmitter<string>();
   statusRes: string = 'res-home';
   resResult: Array<Book> = [];
-  singleBook: Book;
   loan: boolean = false;
 
   constructor(private aas: AccessArchiveService) {}
 
   findBook() {
     let input: string = (document.getElementById('research') as HTMLInputElement).value;
-    if ((input.length === 0) || (input === ' ')) {
+    if (!input || input === ' ') {
       this.resResult = [];
       return;
     }
-    let key = input.toLocaleLowerCase().trim();
+    let key = input.trim();
     this.aas.getArchive().subscribe({
       next: (x: AjaxResponse<any>) => {
         let bookList: Array<Book> = JSON.parse(x.response);
         let archive: Archive = new Archive(bookList);
         this.resResult = archive.checkKey(key);
         if (this.resResult.length === 1) {
-          this.singleBook = this.resResult[0];
-          if (this.resResult[0].nominative !== undefined) {
-            this.loan = true;
-          }
+          this.loan = this.resResult[0].nominative ? true : false;
           this.statusRes = 'res-des';
         }
       },
@@ -55,6 +51,4 @@ export class ResearchComponent implements OnInit {
   emitStatus(statusName:string) {
     this.researchEvent.emit(statusName);
   }
-
-  ngOnInit() {}
 }

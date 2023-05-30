@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core'; 
+import { Component, EventEmitter, Output } from '@angular/core'; 
 import { AjaxResponse } from 'rxjs/ajax';
 import { Book } from '../book';
 import { Archive } from '../archive';
@@ -12,7 +12,7 @@ import { AccessArchiveService } from '../access-archive.service';
   providers: [AccessArchiveService]
 })
 
-export class InsertionComponent implements OnInit {
+export class InsertionComponent {
   @Output() insertionEvent = new EventEmitter<string>();
 
   constructor(private aas: AccessArchiveService) {}
@@ -22,25 +22,19 @@ export class InsertionComponent implements OnInit {
     let aut: string = ((document.getElementById('author') as HTMLInputElement).value).trim();
     let tit: string = ((document.getElementById('title') as HTMLInputElement).value).trim();
     let pos: string = ((document.getElementById('position') as HTMLInputElement).value).trim();
-    if ((aut.length === 0) || (tit.length === 0) || (pos.length === 0)) {
+    if (!aut || !tit || !pos) {
       document.getElementById('insAlert').innerHTML = ' Inserisci tutti i parametri!';
       return;
     }
     let newBook: Book = new Book(pos, aut, tit);
     this.aas.getArchive().subscribe({
-      next: (x: AjaxResponse<any>) => {
-        let bookList: Array<Book> = JSON.parse(x.response);
-        let archive: Archive = new Archive(bookList);
+      next: (x: AjaxResponse<string>) => {
+        let archive: Archive = new Archive(JSON.parse(x.response));
         archive.addBook(newBook);       
         let newArchive: string = JSON.stringify(archive.elenco);
-        this.aas.saveArchive(newArchive).subscribe({
-          next: (x) => {this.insertionEvent.emit('home')},
-          error: (err) => console.log(err.response)
-        });
+        this.aas.saveArchive(newArchive).subscribe(() => this.insertionEvent.emit('home'));
       },
       error: (err) => console.log(err.response)
     });
   }
-
-  ngOnInit() {}
 }

@@ -3,13 +3,14 @@
   <input id='research' (keyup)=findBook()><br>
   <app-result [resResult]='resResult'></app-result>
 </div>
+
 <div *ngIf='statusRes==="res-des"'>
-  <app-description [singleBook]='singleBook' [loan]='loan'></app-description>
+  <app-description [singleBook]='resResult[0]' [loan]='loan'></app-description>
   <div *ngIf='loan===false'>
-    <app-loan [singleBook]='singleBook' (loanEvent)='emitStatus($event)'></app-loan>
-    <app-removal [singleBook]='singleBook' (removalEvent)='emitStatus($event)'></app-removal>
+    <app-loan [singleBook]='resResult[0]' (loanEvent)='researchEvent.emit($event)'></app-loan>
+    <app-removal [singleBook]='resResult[0]' (removalEvent)='researchEvent.emit($event)'></app-removal>
   </div>
   <div *ngIf='loan===true'>
-    <app-return [singleBook]='singleBook' (returnEvent)='emitStatus($event)'></app-return>
+    <app-return [singleBook]='resResult[0]' (returnEvent)='researchEvent.emit($event)'></app-return>
   </div>
 </div>
