@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Book } from '../../book';
 
@@ -10,10 +10,6 @@ import { Book } from '../../book';
   imports: [CommonModule]
 })
 
-export class DescriptionComponent implements OnInit {
+export class DescriptionComponent {
   @Input() singleBook: Book;
-  @Input() loan: boolean;
-
-  constructor() {}
-  ngOnInit() {}
 }

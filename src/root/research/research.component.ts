@@ -23,7 +23,6 @@ export class ResearchComponent {
   @Output() researchEvent = new EventEmitter<string>();
   statusRes: string = 'res-home';
   resResult: Array<Book> = [];
-  loan: boolean = false;
 
   constructor(private aas: AccessArchiveService) {}
 
@@ -40,15 +39,10 @@ export class ResearchComponent {
         let archive: Archive = new Archive(bookList);
         this.resResult = archive.checkKey(key);
         if (this.resResult.length === 1) {
-          this.loan = this.resResult[0].nominative ? true : false;
           this.statusRes = 'res-des';
         }
       },
       error: (err) => console.log(err.response)
     }); 
-  }
-
-  emitStatus(statusName:string) {
-    this.researchEvent.emit(statusName);
   }
 }

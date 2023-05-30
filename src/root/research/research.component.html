@@ -5,12 +5,12 @@
 </div>
 
 <div *ngIf='statusRes==="res-des"'>
-  <app-description [singleBook]='resResult[0]' [loan]='loan'></app-description>
-  <div *ngIf='loan===false'>
+  <app-description [singleBook]='resResult[0]'></app-description>
+  <div *ngIf='!resResult[0].nominative'>
     <app-loan [singleBook]='resResult[0]' (loanEvent)='researchEvent.emit($event)'></app-loan>
     <app-removal [singleBook]='resResult[0]' (removalEvent)='researchEvent.emit($event)'></app-removal>
   </div>
-  <div *ngIf='loan===true'>
+  <div *ngIf='resResult[0].nominative'>
     <app-return [singleBook]='resResult[0]' (returnEvent)='researchEvent.emit($event)'></app-return>
   </div>
 </div>

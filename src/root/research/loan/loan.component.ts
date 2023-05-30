@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../../book';
 import { Archive } from '../../archive';
 import { AjaxResponse } from 'rxjs/ajax';
@@ -12,7 +12,7 @@ import { AccessArchiveService } from '../../access-archive.service';
   providers: [AccessArchiveService] 
 })
 
-export class LoanComponent implements OnInit {
+export class LoanComponent {
   @Input() singleBook: Book;
   @Output() loanEvent = new EventEmitter<string>();
 
@@ -41,6 +41,4 @@ export class LoanComponent implements OnInit {
       error: (err) => console.log(err.response)
     })
   }
-  
-  ngOnInit() {}
 }
