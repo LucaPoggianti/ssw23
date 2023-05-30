@@ -24,7 +24,7 @@ export class InsertionComponent implements OnInit {
     let pos: string = ((document.getElementById('position') as HTMLInputElement).value).trim();
     if ((aut.length === 0) || (tit.length === 0) || (pos.length === 0)) {
       document.getElementById('insAlert').innerHTML = ' Inserisci tutti i parametri!';
-      return
+      return;
     }
     let newBook: Book = new Book(pos, aut, tit);
     this.aas.getArchive().subscribe({

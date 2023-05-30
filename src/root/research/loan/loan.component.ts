@@ -19,9 +19,14 @@ export class LoanComponent implements OnInit {
   constructor(private aas: AccessArchiveService) {}
 
   doLoan() {
+    document.getElementById('loanAlert').innerHTML = '';
     let id: string = this.singleBook.position;  
     var input: HTMLInputElement = document.getElementById('nominative') as HTMLInputElement;
-    var nominative = input.value;
+    var nominative = input.value.trim();
+    if (nominative.length === 0) {
+      document.getElementById('loanAlert').innerHTML = 'Inserisci un nominativo!';
+      return;
+    }
     this.aas.getArchive().subscribe({
       next: (x:AjaxResponse<any>) => {
         let bookList: Array<Book> = JSON.parse(x.response);
