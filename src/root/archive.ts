@@ -20,7 +20,7 @@ export class Archive {
     this.elenco.splice(this.elenco.findIndex((book) => book.position === id), 1);
   }
 
-  changeNominative(id:string, nominative:string) {
+  changeNominative(id:string, nominative:string|undefined) {
     let index:number = this.elenco.findIndex((book) => book.position === id);
     this.elenco[index].nominative = nominative;
   }

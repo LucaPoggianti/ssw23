@@ -26,7 +26,7 @@ export class InsertionComponent {
       document.getElementById('insAlert').innerHTML = ' Inserisci tutti i parametri!';
       return;
     }
-    let newBook: Book = new Book(pos, aut, tit);
+    let newBook: Book = new Book(pos, aut, tit); 
     this.aas.getArchive().subscribe({
       next: (x: AjaxResponse<string>) => {
         let archive: Archive = new Archive(JSON.parse(x.response));
