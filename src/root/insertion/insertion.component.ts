@@ -18,9 +18,14 @@ export class InsertionComponent implements OnInit {
   constructor(private aas: AccessArchiveService) {}
 
   insertBook() {
-    let aut: string = (document.getElementById('author') as HTMLInputElement).value;
-    let tit: string = (document.getElementById('title') as HTMLInputElement).value;
-    let pos: string = (document.getElementById('position') as HTMLInputElement).value;
+    document.getElementById('insAlert').innerHTML = '';
+    let aut: string = ((document.getElementById('author') as HTMLInputElement).value).trim();
+    let tit: string = ((document.getElementById('title') as HTMLInputElement).value).trim();
+    let pos: string = ((document.getElementById('position') as HTMLInputElement).value).trim();
+    if ((aut.length === 0) || (tit.length === 0) || (pos.length === 0)) {
+      document.getElementById('insAlert').innerHTML = ' Inserisci tutti i parametri!';
+      return
+    }
     let newBook: Book = new Book(pos, aut, tit);
     this.aas.getArchive().subscribe({
       next: (x: AjaxResponse<any>) => {
