@@ -14,9 +14,7 @@ import { AccessArchiveService } from '../../access-archive.service';
 
 export class LoanComponent implements OnInit {
   @Input() singleBook: Book;
-  @Output() loanEvent = new EventEmitter<string>(); 
-
-  ngOnInit(){}
+  @Output() loanEvent = new EventEmitter<string>();
 
   constructor(private aas: AccessArchiveService) {}  
 
@@ -41,4 +39,6 @@ export class LoanComponent implements OnInit {
       error: (err) => console.log(err.response)
     });
   }
+
+  ngOnInit(){}
 }

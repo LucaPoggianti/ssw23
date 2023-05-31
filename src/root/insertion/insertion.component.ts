@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core'; 
+import { Component, OnInit, EventEmitter, Output } from '@angular/core'; 
 import { AjaxResponse } from 'rxjs/ajax';
 import { Book } from '../book';
 import { Archive } from '../archive';
@@ -12,7 +12,7 @@ import { AccessArchiveService } from '../access-archive.service';
   providers: [AccessArchiveService]
 })
 
-export class InsertionComponent {
+export class InsertionComponent implements OnInit {
   @Output() insertionEvent = new EventEmitter<string>();
 
   constructor(private aas: AccessArchiveService) {}
@@ -40,4 +40,6 @@ export class InsertionComponent {
       error: (err) => console.log(err.response)
     });
   }
+
+  ngOnInit() {}
 }

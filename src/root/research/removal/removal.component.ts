@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core'; 
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'; 
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { Book } from '../../book';
@@ -14,7 +14,7 @@ import { AccessArchiveService } from '../../access-archive.service';
   providers: [AccessArchiveService] 
 })
 
-export class RemovalComponent {
+export class RemovalComponent implements OnInit {
   @Input() singleBook: Book;
   @Output() removalEvent = new EventEmitter<string>();
 
@@ -35,4 +35,6 @@ export class RemovalComponent {
       error: (err) => console.log(err.response)
     });
   }
+
+  ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Book } from '../../book';
 
 @Component({
@@ -8,6 +8,9 @@ import { Book } from '../../book';
   standalone: true
 })
 
-export class ResultComponent {
+export class ResultComponent implements OnInit {
   @Input() resResult: Array<Book>;
+
+  constructor() {}
+  ngOnInit(){}
 }

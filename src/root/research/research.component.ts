@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
 import { Archive } from '../archive';
@@ -19,7 +19,7 @@ import { AccessArchiveService } from '../access-archive.service';
   providers: [AccessArchiveService]
 })
 
-export class ResearchComponent {
+export class ResearchComponent implements OnInit {
   @Output() researchEvent = new EventEmitter<string>();
   statusRes: string = 'res-home';
   resResult: Array<Book> = [];
@@ -43,4 +43,6 @@ export class ResearchComponent {
       error: (err) => console.log(err.response)
     }); 
   }
+
+  ngOnInit() {}
 }
