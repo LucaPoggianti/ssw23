@@ -27,16 +27,14 @@ export class ResearchComponent {
   constructor(private aas: AccessArchiveService) {}
 
   findBook() {
-    let input: string = (document.getElementById('research') as HTMLInputElement).value;
-    if (!input || input === ' ') {
+    let key: string = (document.getElementById('research') as HTMLInputElement).value.trim();
+    if (!key) {
       this.resResult = [];
       return;
     }
-    let key = input.trim();
     this.aas.getArchive().subscribe({
-      next: (x: AjaxResponse<any>) => {
-        let bookList: Array<Book> = JSON.parse(x.response);
-        let archive: Archive = new Archive(bookList);
+      next: (x: AjaxResponse<string>) => {
+        let archive: Archive = new Archive(JSON.parse(x.response));
         this.resResult = archive.checkKey(key);
         if (this.resResult.length === 1) {
           this.statusRes = 'res-des';

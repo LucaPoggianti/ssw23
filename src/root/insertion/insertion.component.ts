@@ -32,7 +32,10 @@ export class InsertionComponent {
         let archive: Archive = new Archive(JSON.parse(x.response));
         archive.addBook(newBook);       
         let newArchive: string = JSON.stringify(archive.elenco);
-        this.aas.saveArchive(newArchive).subscribe(() => this.insertionEvent.emit('home'));
+        this.aas.saveArchive(newArchive).subscribe({
+          next: () => this.insertionEvent.emit('home'),
+          error: (err) => console.log(err.response)
+        });
       },
       error: (err) => console.log(err.response)
     });

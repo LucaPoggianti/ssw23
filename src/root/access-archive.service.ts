@@ -10,7 +10,7 @@ export class AccessArchiveService {
   base: string = 'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/';
   key: string = '8b1dd28c';
   
-  public getArchive(): Observable<AjaxResponse<any>> {
+  public getArchive(): Observable<AjaxResponse<string>> {
     return ajax({
       method: 'GET',
       url: this.base + 'get?key=' + this.key,

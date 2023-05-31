@@ -3,7 +3,6 @@
   <input id='research' (keyup)=findBook()><br>
   <app-result [resResult]='resResult'></app-result>
 </div>
-
 <div *ngIf='statusRes==="res-des"'>
   <app-description [singleBook]='resResult[0]'></app-description>
   <div *ngIf='!resResult[0].nominative'>
