@@ -23,13 +23,12 @@ export class RemovalComponent {
   removeBook() {
     let id: string = this.singleBook.position;  
     this.aas.getArchive().subscribe({
-      next: (x:AjaxResponse<any>) => {
-        let bookList: Array<Book> = JSON.parse(x.response);
-        let archive: Archive = new Archive(bookList);
+      next: (x:AjaxResponse<string>) => {
+        let archive: Archive = new Archive(JSON.parse(x.response));
         archive.removeBook(id);        
         let newArchive: string = JSON.stringify(archive.elenco);
         this.aas.saveArchive(newArchive).subscribe({
-          next: (x) => {this.removalEvent.emit('home')},
+          next: () => {this.removalEvent.emit('home')},
           error: (err) => console.log(err.response)
         });              
       },

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../../book';
 import { Archive } from '../../archive';
 import { AjaxResponse } from 'rxjs/ajax';
@@ -12,7 +12,7 @@ import { AccessArchiveService } from '../../access-archive.service';
   providers: [AccessArchiveService] 
 })
 
-export class ReturnComponent implements OnInit {
+export class ReturnComponent {
   @Input() singleBook: Book;
   @Output() returnEvent = new EventEmitter<string>();
 
@@ -21,19 +21,16 @@ export class ReturnComponent implements OnInit {
   returnLoan() {
     let id: string = this.singleBook.position;
     this.aas.getArchive().subscribe({
-      next: (x:AjaxResponse<any>) => {
-        let bookList: Array<Book> = JSON.parse(x.response);
-        let archive: Archive = new Archive(bookList);
+      next: (x:AjaxResponse<string>) => {
+        let archive: Archive = new Archive(JSON.parse(x.response));
         archive.changeNominative(id, undefined);             
         let newArchive: string = JSON.stringify(archive.elenco);
         this.aas.saveArchive(newArchive).subscribe({
-          next: (x) => {this.returnEvent.emit('home')},
+          next: () => {this.returnEvent.emit('home')},
           error: (err) => console.log(err.response)
         });              
       },
       error: (err) => console.log(err.response)
     });
   }  
-
-  ngOnInit() {}
 }

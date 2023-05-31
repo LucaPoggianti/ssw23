@@ -21,24 +21,22 @@ export class LoanComponent {
   doLoan() {
     document.getElementById('loanAlert').innerHTML = '';
     let id: string = this.singleBook.position;  
-    var input: HTMLInputElement = document.getElementById('nominative') as HTMLInputElement;
-    var nominative = input.value.trim();
-    if (nominative.length === 0) {
+    var nominative: string = (document.getElementById('nominative') as HTMLInputElement).value.trim();
+    if (!nominative) {
       document.getElementById('loanAlert').innerHTML = 'Inserisci un nominativo!';
       return;
     }
     this.aas.getArchive().subscribe({
-      next: (x:AjaxResponse<any>) => {
-        let bookList: Array<Book> = JSON.parse(x.response);
-        let archive: Archive = new Archive(bookList);
+      next: (x:AjaxResponse<string>) => {
+        let archive: Archive = new Archive(JSON.parse(x.response));
         archive.changeNominative(id, nominative);             
         let newArchive: string = JSON.stringify(archive.elenco);
         this.aas.saveArchive(newArchive).subscribe({
-          next: (x) => {this.loanEvent.emit('home')},
+          next: () => {this.loanEvent.emit('home')},
           error: (err) => console.log(err.response)
         });              
       },
       error: (err) => console.log(err.response)
-    })
+    });
   }
 }
