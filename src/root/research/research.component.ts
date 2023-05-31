@@ -15,7 +15,7 @@ import { AccessArchiveService } from '../access-archive.service';
   templateUrl: './research.component.html',
   styleUrls: ['./research.component.css'],
   standalone: true,
-  imports: [CommonModule, ResultComponent, DescriptionComponent, LoanComponent, RemovalComponent, ReturnComponent],
+  imports: [CommonModule, ResultComponent, DescriptionComponent, LoanComponent, RemovalComponent, ReturnComponent], 
   providers: [AccessArchiveService]
 })
 

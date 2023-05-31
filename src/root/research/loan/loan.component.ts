@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Book } from '../../book';
 import { Archive } from '../../archive';
 import { AjaxResponse } from 'rxjs/ajax';
@@ -12,11 +12,13 @@ import { AccessArchiveService } from '../../access-archive.service';
   providers: [AccessArchiveService] 
 })
 
-export class LoanComponent {
+export class LoanComponent implements OnInit {
   @Input() singleBook: Book;
-  @Output() loanEvent = new EventEmitter<string>();
+  @Output() loanEvent = new EventEmitter<string>(); 
 
-  constructor(private aas: AccessArchiveService) {}
+  ngOnInit(){}
+
+  constructor(private aas: AccessArchiveService) {}  
 
   doLoan() {
     document.getElementById('loanAlert').innerHTML = '';

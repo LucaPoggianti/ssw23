@@ -18,5 +18,5 @@ export class RootComponent {
 
   changeStatus(statusName:string) {
     this.status = statusName;
-  }
+  } 
 }
