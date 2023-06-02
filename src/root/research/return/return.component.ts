@@ -23,7 +23,7 @@ export class ReturnComponent implements OnInit {
     this.aas.getArchive().subscribe({
       next: (x:AjaxResponse<string>) => {
         let archive: Archive = new Archive(JSON.parse(x.response));
-        archive.changeNominative(id, undefined);             
+        archive.changeNominative(id);             
         let newArchive: string = JSON.stringify(archive.elenco);
         this.aas.saveArchive(newArchive).subscribe({
           next: () => {this.returnEvent.emit('home')},
